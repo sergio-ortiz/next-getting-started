@@ -1,19 +1,20 @@
-export default function handler(req, res) {
-  // Get data submitted in request's body.
+import prisma from "../../lib/prisma";
+
+export default async function handler(req, res) {
   const body = req.body;
 
-  // Optional logging to see the responses
-  // in the command line where next.js app is running.
-  console.log("body: ", body);
+  const peep = await prisma.person.findFirst({
+    where: {
+      firstName: body.first,
+      lastName: body.last,
+    },
+  });
 
-  // Guard clause checks for first and last name,
-  // and returns early if they are not found
-  if (!body.first || !body.last) {
-    // Sends a HTTP bad request error code
-    return res.status(400).json({ data: "First or last name not found" });
+  if (!peep) {
+    return res.status(400).json({ data: "peep not found" });
   }
 
   // Found the name.
   // Sends a HTTP success code
-  res.status(200).json({ data: `${body.first} ${body.last}` });
+  res.status(200).json({ id: peep.id });
 }

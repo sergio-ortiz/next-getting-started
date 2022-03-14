@@ -21,8 +21,20 @@ function GetPage({ data }) {
       <h1>List of peeps from a sql database</h1>
       <ul>{people}</ul>
       <form action="../api/form" method="POST">
-        <input type="text" id="first" name="first" placeholder="first name" />
-        <input type="text" id="last" name="last" placeholder="last name" />
+        <input
+          type="text"
+          id="first"
+          name="first"
+          placeholder="first name"
+          required
+        />
+        <input
+          type="text"
+          id="last"
+          name="last"
+          placeholder="last name"
+          required
+        />
         <br />
         <button type="submit">find peep</button>
       </form>
