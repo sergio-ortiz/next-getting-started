@@ -2,3 +2,6 @@
 
 /.next/
 
+.env
+
+dev.db
