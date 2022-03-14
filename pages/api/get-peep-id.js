@@ -18,5 +18,5 @@ export default async function handler(req, res) {
     return res.status(400).json({ data: "peep not found" });
   }
 
-  res.status(200).json({ id: peep.id });
+  res.status(200).json({ data: peep.id });
 }

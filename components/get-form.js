@@ -1,4 +1,4 @@
-async function getPeep(e) {
+async function getPeep(e, setState) {
   e.preventDefault();
   const { first, last } = e.target;
 
@@ -12,12 +12,12 @@ async function getPeep(e) {
 
   const result = await response.json();
 
-  console.log(result);
+  setState(result.data);
 }
 
-export default function GetForm() {
+export default function GetForm({ setState }) {
   return (
-    <form onSubmit={getPeep}>
+    <form onSubmit={(e) => getPeep(e, setState)}>
       <input
         type="text"
         id="first"
