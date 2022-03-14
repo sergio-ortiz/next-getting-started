@@ -3,7 +3,7 @@ import prisma from "../../lib/prisma";
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);
 
-  const peep = await prisma.person.findFirst({
+  const peep = await prisma.peep.findFirst({
     where: {
       firstName: {
         equals: body.first,

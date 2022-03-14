@@ -4,7 +4,7 @@ import GetForm from "../../components/get-form";
 import prisma from "../../lib/prisma";
 
 export async function getServerSideProps() {
-  const data = await prisma.person.findMany();
+  const data = await prisma.peep.findMany();
   return {
     props: {
       data,
